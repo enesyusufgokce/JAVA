@@ -1,0 +1,29 @@
+public void createFile(String name) throws IOException {
+    Files.createFile(Path.of(name));
+}
+
+FileManager diyor ki: "Ben halletmem." İşte throws IOException bunu söylüyor. O kadar.
+
+-----------------------------------------
+
+try {
+    fileManager.createFile(filename);
+} catch (IOException e) {
+    ...
+}
+
+Main diyor ki: "Tamam, ben hallederim." İşte try/catch bunu söylüyor.
+
+---------------------------------------------
+
+throws IOException = "Ben bu hatayı yakalamayacağım, beni çağıran yakalasın."
+Sebep? Çünkü FileManager'ın elinde Scanner yok, kullanıcıya soru soramaz. Ama Main'in var.
+O yüzden FileManager "ben yapamam" diyor, Main "ben yaparım" diyor.
+
+Kuralı içselleştir
+Bir method throws X diyorsa, onu çağıran herkes ya try/catch yapacak ya da kendi de throws X diyecek.
+
+Birisi en sonunda yakalamak zorunda. Sen Main'de yakaladın → görev tamamlandı.
+"throws IOException dedik diye tüm IO'ları halletmek zorunda mıyım?"  --EVET  ya parça parça ya da bütün
+orası sana kalmış
+
